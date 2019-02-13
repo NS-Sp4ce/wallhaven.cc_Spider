@@ -59,7 +59,7 @@ headers = {'User-Agent': choice(USER_AGENTS)}  # 随机UA
 folder_path = './photo/'  # 图片目录
 if os.path.exists(folder_path) == False:  # 判断文件夹是否已经存在
     os.makedirs(folder_path)  # 创建文件夹
-
+MAX_TIMEOUT = 10
 for i in range(1, 999999):
     i = str(i)
 
@@ -67,7 +67,7 @@ for i in range(1, 999999):
     img_name = folder_path + 'wallhaven-' + i + '.jpg'
     try:
         # get函数获取图片链接地址，requests发送访问请求
-        html = requests.get(url, headers=headers)
+        html = requests.get(url, headers=headers,timeout=MAX_TIMEOUT)
         # responseCode=html.status_code
         httpCode = str(html.status_code)
         # print(html.status_code)
